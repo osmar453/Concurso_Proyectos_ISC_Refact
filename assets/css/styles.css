@@ -1,0 +1,980 @@
+/* ==========================================================================
+   XX Concurso de Proyectos de Innovación - ISC TecMM Zapopan
+   Hoja de Estilos Principal (Mobile-First, Accesible, Modo Claro/Oscuro)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Variables CSS y Temas (Paleta Oficial TecMM / ISC)
+   -------------------------------------------------------------------------- */
+:root {
+  /* Colores Principales Institucionales */
+  --primary: #33157A;             /* Morado intenso institucional */
+  --primary-rgb: 51, 21, 122;
+  --primary-dark: #210d54;
+  --primary-light: #4c22aa;
+  --secondary: #1E208A;           /* Índigo oscuro para gradientes y fondos */
+  --secondary-rgb: 30, 32, 138;
+  --accent: #E52E71;              /* Fucsia vibrante para llamadas a la acción (CTA) */
+  --accent-rgb: 229, 46, 113;
+  --accent-hover: #c91f5d;
+  --accent-cyan: #00b4d8;         /* Acento tecnológico secundario */
+
+  /* Colores de Superficie y Fondo - Modo Claro */
+  --bg-body: #f8f9fb;
+  --bg-surface: #ffffff;
+  --bg-surface-elevated: #ffffff;
+  --bg-subtle: #f0f3f8;
+  --border-color: rgba(0, 0, 0, 0.09);
+  --border-subtle: rgba(0, 0, 0, 0.05);
+
+  /* Colores de Texto */
+  --text-main: #1e2029;
+  --text-muted: #5e6475;
+  --text-light: #ffffff;
+  --text-heading: #13141c;
+
+  /* Tipografía y Espaciado */
+  --font-main: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-pill: 9999px;
+
+  /* Sombras */
+  --shadow-sm: 0 2px 8px rgba(20, 20, 30, 0.05);
+  --shadow-md: 0 10px 25px rgba(20, 20, 30, 0.07);
+  --shadow-lg: 0 20px 45px rgba(20, 20, 30, 0.12);
+  --shadow-accent: 0 10px 25px rgba(229, 46, 113, 0.35);
+
+  /* Transiciones */
+  --transition-fast: 0.18s ease;
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Navbar */
+  --navbar-bg: rgba(51, 21, 122, 0.88);
+  --navbar-scrolled: rgba(30, 13, 84, 0.95);
+}
+
+/* Modo Oscuro - Variables personalizadas */
+[data-theme="dark"] {
+  --bg-body: #0d0f18;
+  --bg-surface: #151824;
+  --bg-surface-elevated: #1d2133;
+  --bg-subtle: #1a1e2d;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --border-subtle: rgba(255, 255, 255, 0.06);
+
+  --text-main: #f0f2f8;
+  --text-muted: #9aa1b5;
+  --text-heading: #ffffff;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 10px 25px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 20px 45px rgba(0, 0, 0, 0.6);
+
+  --navbar-bg: rgba(13, 15, 24, 0.85);
+  --navbar-scrolled: rgba(10, 12, 20, 0.95);
+}
+
+/* --------------------------------------------------------------------------
+   2. Reset y Configuración Base
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Para evitar solapamiento con navbar fija */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-body);
+  color: var(--text-main);
+  line-height: 1.7;
+  overflow-x: hidden;
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Skip link para accesibilidad por teclado */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  background: var(--accent);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  z-index: 9999;
+  text-decoration: none;
+  box-shadow: var(--shadow-lg);
+  transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+  top: 1rem;
+  outline: 3px solid #fff;
+}
+
+/* Foco accesible general */
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-heading);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.25;
+}
+
+p {
+  margin-bottom: 1.25rem;
+}
+
+a {
+  color: var(--accent);
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--accent-hover);
+}
+
+/* --------------------------------------------------------------------------
+   3. Navegación Principal (Navbar Glassmorphism)
+   -------------------------------------------------------------------------- */
+.navbar {
+  background: var(--navbar-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: 0.75rem 0;
+  transition: background-color var(--transition-normal), box-shadow var(--transition-normal), padding var(--transition-normal);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  z-index: 1030;
+}
+
+.navbar.scrolled {
+  background: var(--navbar-scrolled);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  padding: 0.5rem 0;
+}
+
+.navbar-brand {
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: #ffffff !important;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.navbar-brand img {
+  border-radius: 8px;
+  transition: transform var(--transition-fast);
+}
+
+.navbar-brand:hover img {
+  transform: rotate(-5deg) scale(1.05);
+}
+
+.nav-link {
+  color: rgba(255, 255, 255, 0.85) !important;
+  font-weight: 600;
+  font-size: 0.925rem;
+  padding: 0.5rem 0.85rem !important;
+  border-radius: var(--radius-sm);
+  transition: color var(--transition-fast), background-color var(--transition-fast);
+  position: relative;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.nav-link.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0.15rem;
+  left: 0.85rem;
+  right: 0.85rem;
+  height: 2px;
+  background-color: var(--accent);
+  border-radius: var(--radius-pill);
+}
+
+/* Botón de Modo Oscuro / Claro */
+.theme-toggle-btn {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  font-size: 1.05rem;
+}
+
+.theme-toggle-btn:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  transform: scale(1.08) rotate(15deg);
+  box-shadow: var(--shadow-accent);
+}
+
+/* --------------------------------------------------------------------------
+   4. Hero Section
+   -------------------------------------------------------------------------- */
+.hero {
+  min-height: 92vh;
+  position: relative;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, rgba(30, 13, 75, 0.88), rgba(20, 22, 90, 0.82)),
+              url('../img/banner.webp') center/cover no-repeat;
+  background-attachment: scroll;
+}
+
+@media (min-width: 992px) {
+  .hero {
+    background-attachment: fixed;
+  }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding-top: 5rem;
+  padding-bottom: 4rem;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(229, 46, 113, 0.2);
+  border: 1px solid rgba(229, 46, 113, 0.45);
+  color: #ff9ec4;
+  padding: 0.35rem 1rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1.25rem;
+  backdrop-filter: blur(6px);
+}
+
+.hero h1 {
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: #ffffff;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.hero .lead {
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 680px;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Botones Personalizados */
+.btn-accent {
+  background: var(--accent);
+  color: #ffffff;
+  border: none;
+  font-weight: 700;
+  padding: 0.85rem 1.85rem;
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 20px rgba(229, 46, 113, 0.35);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal), background-color var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-accent:hover {
+  background: var(--accent-hover);
+  color: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(229, 46, 113, 0.5);
+}
+
+.btn-outline-glass {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  font-weight: 700;
+  padding: 0.85rem 1.85rem;
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(8px);
+  transition: all var(--transition-normal);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-outline-glass:hover {
+  background: #ffffff;
+  color: var(--primary);
+  border-color: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+/* --------------------------------------------------------------------------
+   5. Cuenta Regresiva Dinámica
+   -------------------------------------------------------------------------- */
+.countdown-section {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  padding: 3rem 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  position: relative;
+  z-index: 10;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.countdown-box {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 0.5rem;
+  backdrop-filter: blur(12px);
+  color: #ffffff;
+  transition: transform var(--transition-normal), background-color var(--transition-normal);
+}
+
+.countdown-box:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.countdown-box span {
+  display: block;
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: 800;
+  line-height: 1;
+  color: #ff5e98;
+  margin-bottom: 0.4rem;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 2px 14px rgba(229, 46, 113, 0.45);
+}
+
+.countdown-box small {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 700;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* --------------------------------------------------------------------------
+   6. Secciones Generales y Encabezados
+   -------------------------------------------------------------------------- */
+section {
+  padding: 5rem 0;
+  position: relative;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.section-title .section-tag {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.section-title h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  margin-bottom: 1rem;
+}
+
+.section-title p {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+  color: var(--text-muted);
+  font-size: 1.05rem;
+}
+
+/* --------------------------------------------------------------------------
+   7. Tarjetas y Componentes de Superficie
+   -------------------------------------------------------------------------- */
+.card-custom {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
+  overflow: hidden;
+  height: 100%;
+}
+
+.card-custom:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(229, 46, 113, 0.3);
+}
+
+/* Bienvenida - Bloques con Icono */
+.feature-icon-wrapper {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-md);
+  background: rgba(51, 21, 122, 0.1);
+  color: var(--primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  transition: transform var(--transition-fast), background-color var(--transition-fast);
+}
+
+[data-theme="dark"] .feature-icon-wrapper {
+  background: rgba(229, 46, 113, 0.15);
+  color: #ff75a6;
+}
+
+.feature-item:hover .feature-icon-wrapper {
+  transform: scale(1.1);
+  background: var(--accent);
+  color: #ffffff;
+}
+
+/* Tarjeta Misión */
+.card-mission {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  color: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 3rem 2rem;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.card-mission h4,
+.card-mission h2 {
+  color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   8. Catálogo Interactivo y Filtros de Proyectos
+   -------------------------------------------------------------------------- */
+.filter-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.btn-filter {
+  background: var(--bg-surface);
+  color: var(--text-muted);
+  border: 1px solid var(--border-color);
+  padding: 0.5rem 1.25rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-filter:hover {
+  color: var(--text-main);
+  border-color: var(--accent);
+  background: var(--bg-subtle);
+}
+
+.btn-filter.active {
+  background: var(--accent);
+  color: #ffffff;
+  border-color: var(--accent);
+  box-shadow: 0 4px 12px rgba(229, 46, 113, 0.35);
+}
+
+.search-box-wrapper {
+  max-width: 480px;
+  margin: 0 auto 2.5rem;
+  position: relative;
+}
+
+.search-box-wrapper input {
+  background: var(--bg-surface);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  padding: 0.75rem 1rem 0.75rem 2.85rem;
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-sm);
+  width: 100%;
+  font-size: 0.95rem;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.search-box-wrapper input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(229, 46, 113, 0.15);
+  outline: none;
+}
+
+.search-box-wrapper .search-icon {
+  position: absolute;
+  left: 1.15rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.project-card {
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal), opacity var(--transition-normal);
+}
+
+.project-card .badge-category {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-pill);
+  background: rgba(51, 21, 122, 0.1);
+  color: var(--primary-light);
+}
+
+[data-theme="dark"] .project-card .badge-category {
+  background: rgba(229, 46, 113, 0.15);
+  color: #ff9ec4;
+}
+
+/* --------------------------------------------------------------------------
+   9. Programa del Evento (Timeline Estilizado)
+   -------------------------------------------------------------------------- */
+.program-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  box-shadow: var(--shadow-sm);
+  height: 100%;
+}
+
+.program-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 0.85rem 0;
+  border-bottom: 1px dashed var(--border-color);
+}
+
+.program-item:last-child {
+  border-bottom: none;
+}
+
+.program-time {
+  font-weight: 800;
+  color: var(--accent);
+  min-width: 65px;
+  font-variant-numeric: tabular-nums;
+}
+
+.program-desc {
+  margin-bottom: 0;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+/* --------------------------------------------------------------------------
+   10. Laboratorios y Organizadores
+   -------------------------------------------------------------------------- */
+.lab-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.lab-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.lab-card img {
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+  max-height: 220px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.person-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  height: 100%;
+}
+
+.person-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+}
+
+.person-card-img-wrapper {
+  height: 260px;
+  overflow: hidden;
+  background-color: var(--bg-subtle);
+  position: relative;
+}
+
+.person-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform var(--transition-normal);
+}
+
+.person-card:hover img {
+  transform: scale(1.05);
+}
+
+.person-card .card-body {
+  padding: 1.25rem;
+  text-align: center;
+}
+
+.person-card h5 {
+  font-size: 1.05rem;
+  margin-bottom: 0.25rem;
+}
+
+.person-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--accent);
+  letter-spacing: 1px;
+}
+
+/* --------------------------------------------------------------------------
+   11. Formulario de Registro / Contacto Interactivo
+   -------------------------------------------------------------------------- */
+.form-section-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem 2rem;
+  box-shadow: var(--shadow-md);
+}
+
+@media (min-width: 768px) {
+  .form-section-card {
+    padding: 3.5rem;
+  }
+}
+
+.form-label {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--text-main);
+  margin-bottom: 0.35rem;
+}
+
+.form-control, .form-select {
+  background-color: var(--bg-surface);
+  color: var(--text-main);
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.form-control:focus, .form-select:focus {
+  background-color: var(--bg-surface);
+  color: var(--text-main);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(229, 46, 113, 0.2);
+}
+
+.form-control.is-valid, .form-select.is-valid {
+  border-color: #198754;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23198754' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+}
+
+.form-control.is-invalid, .form-select.is-invalid {
+  border-color: #dc3545;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+}
+
+.invalid-feedback {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.form-text-hint {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   12. Acordeón FAQ Interactivo
+   -------------------------------------------------------------------------- */
+.accordion-custom .accordion-item {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md) !important;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: border-color var(--transition-fast);
+}
+
+.accordion-custom .accordion-item:hover {
+  border-color: rgba(229, 46, 113, 0.35);
+}
+
+.accordion-custom .accordion-button {
+  background-color: var(--bg-surface);
+  color: var(--text-heading);
+  font-weight: 700;
+  font-size: 1.05rem;
+  padding: 1.25rem 1.5rem;
+  box-shadow: none;
+  transition: all var(--transition-fast);
+}
+
+.accordion-custom .accordion-button:not(.collapsed) {
+  background-color: var(--bg-subtle);
+  color: var(--accent);
+}
+
+.accordion-custom .accordion-body {
+  background-color: var(--bg-surface);
+  color: var(--text-muted);
+  padding: 1.25rem 1.5rem 1.5rem;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+/* --------------------------------------------------------------------------
+   13. Empresas Aliadas
+   -------------------------------------------------------------------------- */
+.aliado-logo-box {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
+}
+
+.aliado-logo-box:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(229, 46, 113, 0.3);
+}
+
+.aliado-logo-box img {
+  max-height: 55px;
+  max-width: 100%;
+  object-fit: contain;
+  filter: grayscale(80%) opacity(0.85);
+  transition: filter var(--transition-normal), transform var(--transition-normal);
+}
+
+.aliado-logo-box:hover img {
+  filter: grayscale(0%) opacity(1);
+  transform: scale(1.05);
+}
+
+/* --------------------------------------------------------------------------
+   14. Llamado a la Acción (CTA) y Footer
+   -------------------------------------------------------------------------- */
+.cta-banner {
+  background: linear-gradient(135deg, var(--primary) 0%, #682eb5 100%);
+  color: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 4.5rem 2rem;
+  text-align: center;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-banner h2 {
+  color: #ffffff;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+}
+
+.cta-banner p {
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  font-size: 1.15rem;
+}
+
+.site-footer {
+  background: #0d0f17;
+  color: #b3b8c8;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 4.5rem 0 2rem;
+}
+
+.site-footer h6 {
+  color: #ffffff;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+  margin-bottom: 1.25rem;
+}
+
+.site-footer a {
+  color: #9aa1b5;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.site-footer a:hover {
+  color: #ffffff;
+}
+
+.social-links {
+  display: flex;
+  gap: 0.85rem;
+}
+
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.07);
+  color: #ffffff;
+  font-size: 1.1rem;
+  transition: all var(--transition-fast);
+}
+
+.social-links a:hover {
+  background: var(--accent);
+  color: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(229, 46, 113, 0.4);
+}
+
+/* Botón flotante Volver Arriba */
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #ffffff;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  box-shadow: var(--shadow-accent);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all var(--transition-normal);
+  z-index: 1020;
+  cursor: pointer;
+}
+
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background: var(--accent-hover);
+  transform: translateY(-4px) scale(1.05);
+}
+
+/* --------------------------------------------------------------------------
+   15. Modales Accesibles y Optimizados
+   -------------------------------------------------------------------------- */
+.modal-content {
+  background-color: var(--bg-surface);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+.modal-header {
+  border-bottom: 1px solid var(--border-color);
+  padding: 1.25rem 1.75rem;
+}
+
+.modal-footer {
+  border-top: 1px solid var(--border-color);
+  padding: 1rem 1.75rem;
+}
+
+[data-theme="dark"] .btn-close {
+  filter: invert(1) grayscale(100%) brightness(200%);
+}
+
