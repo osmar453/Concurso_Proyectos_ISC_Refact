@@ -154,20 +154,20 @@ Concurso_Proyectos_ISC_Refact/
 
 ### Espacio para Evidencia Gráfica (Screenshots)
 
-> **Nota:** Para agregar las capturas a esta sección, guarda tus capturas de pantalla en una carpeta `docs/screenshots/` y referéncialas a continuación:
+> **Nota:** Para agregar las capturas a esta sección, guarda tus capturas de pantalla en una carpeta `assets/docs/screenshots/` y referéncialas a continuación:
 
 #### 1. Hero y Cuenta Regresiva (Modo Claro vs Modo Oscuro)
 ```markdown
 | Modo Claro | Modo Oscuro |
 |:---:|:---:|
-| ![Hero Modo Claro](./docs/screenshots/hero-claro.png) | ![Hero Modo Oscuro](./docs/screenshots/hero-oscuro.png) |
+| ![Hero Modo Claro](assets/docs/screenshots/hero-claro.png) | ![Hero Modo Oscuro](assets/docs/screenshots/hero-oscuro.png) |
 ```
 
 #### 3. Validación de Formulario en Tiempo Real
 ```markdown
 | Validación en Vivo (Error vs Válido) | Confirmación de Registro |
 |:---:|:---:|
-| ![Validación](./docs/screenshots/formulario-validacion.png) | ![Éxito](./docs/screenshots/formulario-exito.png) |
+| ![Validación](assets/docs/screenshots/formulario-validacion.png) | ![Éxito](assets/docs/screenshots/formulario-exito.png) |
 ```
 
 ---
