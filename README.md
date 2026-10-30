@@ -11,7 +11,7 @@ Sitio web oficial y responsivo del **XX Concurso de Proyectos de Innovación** d
 
 ---
 
-## 🌐 Enlace al Sitio en Producción (GitHub Pages)
+## Enlace al Sitio en Producción (GitHub Pages)
 
 El proyecto está preparado para su despliegue continuo en **GitHub Pages**:
 
@@ -19,7 +19,7 @@ El proyecto está preparado para su despliegue continuo en **GitHub Pages**:
 
 ---
 
-## 🚀 Lista Detallada de Mejoras Realizadas
+## Lista Detallada de Mejoras Realizadas
 
 La refactorización integral del proyecto abarcó los 4 pilares solicitados, elevando la calidad de código, accesibilidad, desempeño y experiencia de usuario:
 
@@ -97,7 +97,7 @@ La refactorización integral del proyecto abarcó los 4 pilares solicitados, ele
 
 ---
 
-## 🛠️ Tecnologías y Librerías Utilizadas
+## Tecnologías y Librerías Utilizadas
 
 | Categoría | Tecnología / Librería | Versión | Propósito |
 |---|---|---|---|
@@ -111,7 +111,7 @@ La refactorización integral del proyecto abarcó los 4 pilares solicitados, ele
 
 ---
 
-## 📂 Estructura del Proyecto
+## Estructura del Proyecto
 
 ```text
 Concurso_Proyectos_ISC_Refact/
@@ -138,7 +138,7 @@ Concurso_Proyectos_ISC_Refact/
 
 ---
 
-## 📸 Capturas de Pantalla (Antes y Después)
+## Capturas de Pantalla (Antes y Después)
 
 ### Comparativa Visual y Funcional
 
@@ -163,13 +163,6 @@ Concurso_Proyectos_ISC_Refact/
 | ![Hero Modo Claro](./docs/screenshots/hero-claro.png) | ![Hero Modo Oscuro](./docs/screenshots/hero-oscuro.png) |
 ```
 
-#### 2. Catálogo Interactivo y Modal de Proyectos
-```markdown
-| Filtros y Búsqueda en Vivo | Modal de Ficha Técnica |
-|:---:|:---:|
-| ![Catálogo](./docs/screenshots/catalogo.png) | ![Modal](./docs/screenshots/modal-detalle.png) |
-```
-
 #### 3. Validación de Formulario en Tiempo Real
 ```markdown
 | Validación en Vivo (Error vs Válido) | Confirmación de Registro |
@@ -179,7 +172,7 @@ Concurso_Proyectos_ISC_Refact/
 
 ---
 
-## 🚢 Instrucciones de Despliegue en GitHub Pages
+## Instrucciones de Despliegue en GitHub Pages
 
 Para publicar este proyecto de forma gratuita y automática en GitHub Pages:
 
@@ -205,7 +198,7 @@ Para publicar este proyecto de forma gratuita y automática en GitHub Pages:
 
 ---
 
-## 👨‍💻 Autor y Créditos
+## Autor y Créditos
 
 - **Academia de Ingeniería en Sistemas Computacionales**
 - **Instituto Tecnológico José Mario Molina Pasquel y Henríquez – Unidad Académica Zapopan**
