@@ -248,7 +248,7 @@ function initProjectsShowcase() {
         <div class="card-custom p-4 d-flex flex-column h-100">
           <div class="d-flex justify-content-between align-items-center mb-3">
             <span class="badge-category">${escapeHtml(project.categoryLabel)}</span>
-            <small class="text-muted fw-bold">${escapeHtml(project.semester)}</small>
+            <small class="badge-semester fw-bold">${escapeHtml(project.semester)}</small>
           </div>
           <h3 class="h5 fw-bold mb-2">${escapeHtml(project.title)}</h3>
           <p class="text-muted small flex-grow-1 mb-3">${escapeHtml(project.shortDesc)}</p>

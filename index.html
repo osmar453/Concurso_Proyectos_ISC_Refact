@@ -52,18 +52,19 @@
   <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
   <!-- ======================================================================
-       HEADER & NAVEGACIÓN PRINCIPAL
+       HEADER & NAVEGACIÓN PRINCIPAL RESPONSIVA
        ====================================================================== -->
   <header class="site-header">
-    <nav class="navbar navbar-expand-lg fixed-top" aria-label="Navegación principal del sitio">
+    <nav class="navbar navbar-expand-xl fixed-top" aria-label="Navegación principal del sitio">
       <div class="container">
         <a class="navbar-brand" href="#inicio">
-          <img src="./assets/img/logotsj.webp" alt="Logotipo Oficial TecMM Zapopan" width="40" height="40" fetchpriority="high">
-          <span>Concurso de Innovación ISC</span>
+          <img src="./assets/img/logotsj.webp" alt="Logotipo Oficial TecMM Zapopan" width="38" height="38" fetchpriority="high">
+          <span class="d-none d-sm-inline">Concurso de Innovación ISC</span>
+          <span class="d-inline d-sm-none">Concurso ISC</span>
         </a>
 
-        <!-- Botón Toggle Responsive para Móviles -->
-        <div class="d-flex align-items-center gap-2 d-lg-none">
+        <!-- Botones para Móviles y Tablets (< 1200px) -->
+        <div class="d-flex align-items-center gap-2 d-xl-none">
           <button class="theme-toggle-btn" id="mobile-theme-toggle" type="button" aria-label="Cambiar tema de color">
             <i class="fa-solid fa-moon" aria-hidden="true"></i>
           </button>
@@ -72,14 +73,11 @@
           </button>
         </div>
 
-        <!-- Menú de Enlaces -->
+        <!-- Menú de Enlaces Estructurado -->
         <div class="collapse navbar-collapse" id="navbarMain">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+          <ul class="navbar-nav ms-auto mb-2 mb-xl-0 align-items-xl-center">
             <li class="nav-item">
               <a class="nav-link" href="#inicio">Inicio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#bienvenida">Bienvenida</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#proyectos">Proyectos</a>
@@ -97,15 +95,17 @@
               <a class="nav-link" href="#organizadores">Organizadores</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#faq">Preguntas</a>
+              <a class="nav-link" href="#faq">FAQ</a>
             </li>
-            <li class="nav-item ms-lg-2 my-2 my-lg-0">
-              <a class="btn btn-accent btn-sm px-3" href="#registro">
-                <i class="fa-solid fa-file-pen me-1" aria-hidden="true"></i> Registro
+            <!-- Botón Registro Integrado -->
+            <li class="nav-item ms-xl-2 my-2 my-xl-0">
+              <a class="btn btn-accent btn-sm nav-btn-registro" href="#registro">
+                <i class="fa-solid fa-file-pen" aria-hidden="true"></i>
+                <span>Registro</span>
               </a>
             </li>
             <!-- Selector de Tema Claro / Oscuro (Desktop) -->
-            <li class="nav-item ms-lg-2 d-none d-lg-block">
+            <li class="nav-item ms-xl-2 d-none d-xl-block">
               <button class="theme-toggle-btn" id="theme-toggle-btn" type="button" aria-label="Cambiar a modo oscuro" title="Cambiar a modo oscuro">
                 <i class="fa-solid fa-moon" aria-hidden="true"></i>
               </button>
@@ -202,7 +202,7 @@
         <div class="row align-items-center g-5">
           <!-- Columna Izquierda: Pilares del Concurso -->
           <div class="col-lg-6">
-            <h3 class="h4 fw-bold mb-3" style="color: var(--primary);">Soluciones tecnológicas a problemáticas reales</h3>
+            <h3 class="h4 fw-bold mb-3 highlight-heading">Soluciones tecnológicas a problemáticas reales</h3>
             <p class="text-muted mb-4">
               El Concurso de Proyectos de Innovación de la Academia de ISC reúne a los principales agentes de cambio:
             </p>
@@ -501,7 +501,7 @@
       </div>
     </section>
 
-    <!-- 8. COMITÉ ORGANIZADOR -->
+    <!-- 8. COMITÉ ORGANIZADOR (FOTOS Y AVATARES OFICIALES TSJ) -->
     <section id="organizadores" class="bg-subtle" aria-labelledby="organizadores-title">
       <div class="container">
         <div class="section-title">
@@ -511,13 +511,13 @@
         </div>
 
         <div class="row g-4">
-          <!-- Organizador 1 -->
+          <!-- Organizador 1: Mtra. Nancy Ruiz Monroy -->
           <div class="col-sm-6 col-lg-3">
-            <article class="person-card">
+            <article class="person-card avatar-card">
               <div class="person-card-img-wrapper">
                 <picture>
-                  <source srcset="./assets/img/1573575601581.webp" type="image/webp">
-                  <img src="./assets/img/1573575601581.png" alt="Fotografía de la Mtra. Nancy Ruiz Monroy, Coordinadora del Concurso" loading="lazy" decoding="async">
+                  <source srcset="./assets/img/UF.webp" type="image/webp">
+                  <img src="./assets/img/UF.png" alt="Avatar institucional de la Mtra. Nancy Ruiz Monroy, Coordinadora General" loading="lazy" decoding="async">
                 </picture>
               </div>
               <div class="card-body">
@@ -527,13 +527,13 @@
             </article>
           </div>
 
-          <!-- Organizador 2 -->
+          <!-- Organizador 2: Ing. Quinatzin Reyes Gómez -->
           <div class="col-sm-6 col-lg-3">
-            <article class="person-card">
+            <article class="person-card avatar-card">
               <div class="person-card-img-wrapper">
                 <picture>
-                  <source srcset="./assets/img/16953074614314.webp" type="image/webp">
-                  <img src="./assets/img/16953074614314.png" alt="Fotografía del Ing. Quinatzin Reyes Gómez, Coordinador Académico" loading="lazy" decoding="async">
+                  <source srcset="./assets/img/UM.webp" type="image/webp">
+                  <img src="./assets/img/UM.png" alt="Avatar institucional del Ing. Quinatzin Reyes Gómez, Coordinador Técnico" loading="lazy" decoding="async">
                 </picture>
               </div>
               <div class="card-body">
@@ -543,7 +543,7 @@
             </article>
           </div>
 
-          <!-- Organizador 3 -->
+          <!-- Organizador 3: Dr. León Miguel Ramos Corchado -->
           <div class="col-sm-6 col-lg-3">
             <article class="person-card">
               <div class="person-card-img-wrapper">
@@ -559,13 +559,13 @@
             </article>
           </div>
 
-          <!-- Organizador 4 -->
+          <!-- Organizador 4: Mtra. Irma Toscano Barajas -->
           <div class="col-sm-6 col-lg-3">
-            <article class="person-card">
+            <article class="person-card avatar-card">
               <div class="person-card-img-wrapper">
                 <picture>
-                  <source srcset="./assets/img/1730166035765.webp" type="image/webp">
-                  <img src="./assets/img/1730166035765.png" alt="Fotografía de la Mtra. Irma Toscano Barajas, Colaboradora Académica" loading="lazy" decoding="async">
+                  <source srcset="./assets/img/UF.webp" type="image/webp">
+                  <img src="./assets/img/UF.png" alt="Avatar institucional de la Mtra. Irma Toscano Barajas, Comité Evaluador" loading="lazy" decoding="async">
                 </picture>
               </div>
               <div class="card-body">
@@ -575,13 +575,13 @@
             </article>
           </div>
 
-          <!-- Organizador 5 -->
+          <!-- Organizador 5: Mtro. José Luis García Cerpas -->
           <div class="col-sm-6 col-lg-3">
-            <article class="person-card">
+            <article class="person-card avatar-card">
               <div class="person-card-img-wrapper">
                 <picture>
-                  <source srcset="./assets/img/1731100254822.webp" type="image/webp">
-                  <img src="./assets/img/1731100254822.jpeg" alt="Fotografía del Mtro. José Luis García Cerpas, Colaborador de Cómputo" loading="lazy" decoding="async">
+                  <source srcset="./assets/img/UM.webp" type="image/webp">
+                  <img src="./assets/img/UM.png" alt="Avatar institucional del Mtro. José Luis García Cerpas, Soporte Tecnológico" loading="lazy" decoding="async">
                 </picture>
               </div>
               <div class="card-body">
@@ -591,13 +591,13 @@
             </article>
           </div>
 
-          <!-- Organizador 6 -->
+          <!-- Organizador 6: Ing. Fabián González Torres -->
           <div class="col-sm-6 col-lg-3">
-            <article class="person-card">
+            <article class="person-card avatar-card">
               <div class="person-card-img-wrapper">
                 <picture>
-                  <source srcset="./assets/img/1741719267389.webp" type="image/webp">
-                  <img src="./assets/img/1741719267389.png" alt="Fotografía del Ing. Fabián González Torres, Colaborador del Evento" loading="lazy" decoding="async">
+                  <source srcset="./assets/img/UM.webp" type="image/webp">
+                  <img src="./assets/img/UM.png" alt="Avatar institucional del Ing. Fabián González Torres, Logística y Operación" loading="lazy" decoding="async">
                 </picture>
               </div>
               <div class="card-body">
@@ -607,13 +607,13 @@
             </article>
           </div>
 
-          <!-- Organizador 7 -->
+          <!-- Organizador 7: Mtro. Rigoberto Cárdenas Larios -->
           <div class="col-sm-6 col-lg-3">
-            <article class="person-card">
+            <article class="person-card avatar-card">
               <div class="person-card-img-wrapper">
                 <picture>
-                  <source srcset="./assets/img/c0l4.webp" type="image/webp">
-                  <img src="./assets/img/c0l4.png" alt="Fotografía del Mtro. Rigoberto Cárdenas Larios, Jurado Evaluador" loading="lazy" decoding="async">
+                  <source srcset="./assets/img/UM.webp" type="image/webp">
+                  <img src="./assets/img/UM.png" alt="Avatar institucional del Mtro. Rigoberto Cárdenas Larios, Jurado Calificador" loading="lazy" decoding="async">
                 </picture>
               </div>
               <div class="card-body">
@@ -908,16 +908,16 @@
             <div class="col-6">
               <ul class="list-unstyled">
                 <li class="mb-2"><a href="#inicio"><i class="fa-solid fa-chevron-right me-1 text-accent" aria-hidden="true"></i> Inicio</a></li>
-                <li class="mb-2"><a href="#bienvenida"><i class="fa-solid fa-chevron-right me-1 text-accent" aria-hidden="true"></i> Bienvenida</a></li>
                 <li class="mb-2"><a href="#proyectos"><i class="fa-solid fa-chevron-right me-1 text-accent" aria-hidden="true"></i> Proyectos</a></li>
                 <li class="mb-2"><a href="#programa"><i class="fa-solid fa-chevron-right me-1 text-accent" aria-hidden="true"></i> Programa</a></li>
+                <li class="mb-2"><a href="#labs"><i class="fa-solid fa-chevron-right me-1 text-accent" aria-hidden="true"></i> Laboratorios</a></li>
               </ul>
             </div>
             <div class="col-6">
               <ul class="list-unstyled">
-                <li class="mb-2"><a href="#labs"><i class="fa-solid fa-chevron-right me-1 text-accent" aria-hidden="true"></i> Laboratorios</a></li>
                 <li class="mb-2"><a href="#sede"><i class="fa-solid fa-chevron-right me-1 text-accent" aria-hidden="true"></i> Sede</a></li>
                 <li class="mb-2"><a href="#organizadores"><i class="fa-solid fa-chevron-right me-1 text-accent" aria-hidden="true"></i> Organizadores</a></li>
+                <li class="mb-2"><a href="#faq"><i class="fa-solid fa-chevron-right me-1 text-accent" aria-hidden="true"></i> FAQ</a></li>
                 <li class="mb-2"><a href="#registro"><i class="fa-solid fa-chevron-right me-1 text-accent" aria-hidden="true"></i> Registro</a></li>
               </ul>
             </div>
